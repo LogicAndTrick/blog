@@ -43,6 +43,7 @@ body .content {
 
 h1, h2, h3 {
     margin: 5px 0;
+    line-height: 1.1em;
 }
 
 h3 {
@@ -291,5 +292,9 @@ pre {
 
     .index li {
         border-bottom: 1px solid #eee;
+    }
+
+    blockquote {
+        padding: 5px 10px;
     }
 }
