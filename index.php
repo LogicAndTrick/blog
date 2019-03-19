@@ -97,10 +97,10 @@
             <div class="footer">
                 &copy; Logic & Trick <?php echo date('Y') ?>
                 <span class="splitter">&bull;</span>
-                <a href="http://github.com/LogicAndTrick">Github</a>
+                <a href="https://github.com/LogicAndTrick">Github</a>
                 <span class="splitter">&bull;</span>
-                <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/">
-                    <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png">
+                <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/">
+                    <img alt="Creative Commons License" src="//i.creativecommons.org/l/by-nc-nd/3.0/80x15.png">
                 </a>
             </div>
             <div class="content">

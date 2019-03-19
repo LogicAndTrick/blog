@@ -36,6 +36,9 @@ function templ_index($posts_by_category, $cat_filter, $tag_filter) {
 			foreach ($post->tags as $tag) {
 				$s .= ' <a class="tag" href="/index/tag:' . $tag . '">' . $tag . '</a>';
 			}
+            if (isset($post->unpublished)) {
+                $s .= ' <a class="tag unpublished" href="#">unpublished</a>';
+            }
 			$s .= '</li>';
 		}
 		$s .= '</ul></div>';
@@ -51,7 +54,7 @@ function templ_post($post) {
 	$s .= '<h3>First posted on ' . templ_date($post->date) . ' in ' . $post->category . '</h3><div>';
 	$s .= $pd->text($post->text);
 	if (isset($post->log)) {
-		$s .= '<hr/><h4>Changelog</h4>';
+		$s .= '<hr/><h3>Changelog</h3>';
 		$s .= '<ul>';
 		$s .= '<li>' . $post->date . ' - Initial post</li>';
 		foreach ($post->log as $log) $s .= '<li>' . $log . '</li>';
@@ -59,23 +62,25 @@ function templ_post($post) {
 	}
 	$s .= '</div>';
 	$dsq_id = $post->id;
-	if ($post->disqus_id) {
+	if (isset($post->disqus_id)) {
 		$dsq_id = $post->disqus_id;
 	}
 	
-	$s .= '<hr/><h2>Comments <small>(via Disqus)</small></h2>';
-	$s .= "<div id=\"disqus_thread\"></div>
-    <script type=\"text/javascript\">
-        var disqus_shortname = 'logicandtrick';
-        var disqus_identifier = '" . $dsq_id . "';
-        var disqus_url = 'http://logic-and-trick.com/post/" . $post->id . "';
-        var disqus_title = '" . $post->title . "';
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>";
+    if (!isset($post->unpublished)) {
+        $s .= '<hr/><h2>Comments <small>(via Disqus)</small></h2>';
+        $s .= "<div id=\"disqus_thread\"></div>
+        <script type=\"text/javascript\">
+            var disqus_shortname = 'logicandtrick';
+            var disqus_identifier = '" . $dsq_id . "';
+            var disqus_url = 'https://logic-and-trick.com/post/" . $post->id . "';
+            var disqus_title = '" . $post->title . "';
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>";
+    }
 	
 	return templ_wrap($s, 'post');
 }

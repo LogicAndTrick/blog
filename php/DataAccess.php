@@ -45,10 +45,16 @@ function get_categories() {
 	return $catData;
 }
 
+function running_locally() {
+    return $_SERVER['REMOTE_ADDR'] == '::1' || $_SERVER['REMOTE_ADDR'] == '127.0.0.1';
+}
+
 // Get a list of posts, sorted by date descending. Can filter by category or tag.
 function get_posts($cat = null, $tag = null) {
 	global $blogData;
-	return array_filter($blogData, function($post) use ($cat, $tag) {
+    $local = running_locally();
+	return array_filter($blogData, function($post) use ($cat, $tag, $local) {
+        if (isset($post->unpublished) && !$local) return false;
 		return (!$cat || $cat == $post->category) && (!$tag || array_search($tag, $post->tags) !== false);
 	});
 }

@@ -41,13 +41,34 @@ body .content {
     clear: both;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5 {
     margin: 5px 0;
     line-height: 1.1em;
 }
 
+h1 {
+    padding-bottom: 5px;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.6em;
+    padding-bottom: 3px;
+    border-bottom: 1px dashed #ccc;
+    margin-bottom: 3px;
+}
+
 h3 {
-    font-size: 90%;
+    font-size: 1.1em;
+}
+
+h4 {
+    color: #555;
+    font-size: 1.05em;
+    font-variant: small-caps;
+    font-weight: normal;
+    text-decoration: underline;
 }
 
 a {
@@ -74,6 +95,10 @@ a:hover {
     background-color: #547CFF;
     color: #fff;
     text-decoration: none;
+}
+
+.tag.unpublished {
+    background-color: #ff8800;
 }
 
 .alert {

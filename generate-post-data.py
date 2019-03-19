@@ -23,15 +23,15 @@ cats_data = sorted(cats_data, key=unicode.lower)
 data_file = '<?php\n'
 
 data_file += '$blogData = json_decode(\''
-data_file += json.dumps(post_data)
+data_file += json.dumps(post_data).replace('\'', '\\\'')
 data_file += '\');\n'
 
 data_file += '$tagData = json_decode(\''
-data_file += json.dumps(list(tags_data))
+data_file += json.dumps(list(tags_data)).replace('\'', '\\\'')
 data_file += '\');\n'
 
 data_file += '$catData = json_decode(\''
-data_file += json.dumps(list(cats_data))
+data_file += json.dumps(list(cats_data)).replace('\'', '\\\'')
 data_file += '\');\n'
 
 with open(os.path.join(os.getcwd(), 'php', 'BlogData.php'), "w") as blog_data_file:

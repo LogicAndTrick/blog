@@ -49,5 +49,5 @@ The routing structure is very simple. Only two main routes are available:
 ## License
 
 - My blog posts inside the `posts` folder are
-  [CC-BY-NC-ND](http://creativecommons.org/licenses/by-nc-nd/3.0/).
-- Everything else is [MIT License](http://opensource.org/licenses/MIT)
+  [CC-BY-NC-ND](https://creativecommons.org/licenses/by-nc-nd/3.0/).
+- Everything else is [MIT License](https://opensource.org/licenses/MIT)

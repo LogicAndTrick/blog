@@ -34,7 +34,7 @@ Decals behave differently in the editor when compared to the engine.
 
 After reviewing this list, I have a general idea of what decals are, how they are used, and how to render them. However, I have a reasonably major problem that I need to resolve before implementation can begin, and that's the last two points: the inconsistencies. These are one of the reasons why decals are one of the more difficult things to implement in Sledge - there are two different ways they can behave, and I don't know the specifics of either of them. For me, the behaviour of the engine is the one that I want to replicate, so I need to figure out what it's doing.
 
-To figure out the next step, I asked for advice from the Goldsource veterans over on [TWHL](http://twhl.info/forums.php?thread=18288), and got a hit pretty quickly. So you don't have to read through it yourself, here's the low down from the all-knowing Daubster:
+To figure out the next step, I asked for advice from the Goldsource veterans over on [TWHL](https://twhl.info/thread/view/18288), and got a hit pretty quickly. So you don't have to read through it yourself, here's the low down from the all-knowing Daubster:
 
 > In the game code it determines the world geometry affected by tracing along the min/max of a 10x10x10 bounding box centered around the origin of the infodecal.
 
