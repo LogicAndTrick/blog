@@ -1,10 +1,11 @@
-{
-    "date": "2013-09-17",
-    "category": "Programming",
-    "tags": ["programming", "algorithms"],
-    "title": "The Overlapping Date Range Test",
-    "disqus_id": "logic-and-trick-blog-id-23"
-}
+---
+date: 2013-09-17
+category: Programming
+tags:
+    - programming
+    - algorithms
+title: The Overlapping Date Range Test
+---
 
 In my line of work, I have to do a **lot** of comparisons of times and dates.
 The most common use is something like this:
@@ -24,8 +25,8 @@ Imagine that the selected time range and the periods to match against are drawn 
 There are six different situations that can arise:
 
 <div class="image center" markdown="1">
-![Time period overlap test](/img/the-overlapping-date-range-test/OverlappingDateRangeDiagram.png)
-A timeline diagram of the six scenarios of this problem.
+    <img src="../image/the-overlapping-date-range-test/OverlappingDateRangeDiagram.png" alt="Time period overlap test" />
+    A timeline diagram of the six scenarios of this problem.
 </div>
 
 1. The period is entirely before the selected range (does not match)
@@ -43,20 +44,22 @@ rather how easy it is to do it wrong.
 
 ### Example 1
 
-    if ((period.Start <= selection.Start && period.Start > selection.End) ||
-        (period.Start >= selection.Start && period.End <= selection.End) ||
-        (period.Start < selection.End && period.End >= selection.End))
-    {
-        // period overlaps selection
-    }
+```csharp
+if ((period.Start <= selection.Start && period.Start > selection.End) ||
+    (period.Start >= selection.Start && period.End <= selection.End) ||
+    (period.Start < selection.End && period.End >= selection.End))
+{
+    // period overlaps selection
+}
+```
 
 ### Example 2
 
-    var matching = periods.Where(period => 
-        (period.Start >= selection.Start && period.Start <= selection.End) || 
-        (period.End >= selection.Start && period.End <= selection.End));
-
-
+```csharp
+var matching = periods.Where(period => 
+    (period.Start >= selection.Start && period.Start <= selection.End) || 
+    (period.End >= selection.Start && period.End <= selection.End));
+```
 
 The first thing you might notice about these examples is that they seem rather complex.
 Both examples get pretty close, but fail to match on one of the conditions from the diagram
@@ -74,20 +77,24 @@ these examples to and from inclusive/exclusive algorithms is left as an exercise
 We start by looking at the six requirements. Since we know that four scenarios must match
 and two must not, we can build a brute-force solution:
 
-    if (Condition3 OR Condition4 OR Condition5 OR Condition6)
-    {
-        // period overlaps selection
-    }
+```csharp
+if (Condition3 OR Condition4 OR Condition5 OR Condition6)
+{
+    // period overlaps selection
+}
+```
 
 Or, in actual code:
 
-    if ((period.Start < selection.Start && period.End > selection.Start) ||
-        (period.Start > selection.Start && period.End < selection.End) ||
-        (period.Start < selection.End && period.End > selection.End) ||
-        (period.Start < selection.Start && period.End > selection.End))
-    {
-        // period overlaps selection
-    }
+```csharp
+if ((period.Start < selection.Start && period.End > selection.Start) ||
+    (period.Start > selection.Start && period.End < selection.End) ||
+    (period.Start < selection.End && period.End > selection.End) ||
+    (period.Start < selection.Start && period.End > selection.End))
+{
+    // period overlaps selection
+}
+```
 
 This code should work and will pass all tests - however, it's complex and unwieldy.
 I cannot say for sure that it doesn't have any bugs without running unit tests over it,
@@ -98,36 +105,44 @@ Let's look at this a different way. If we have six scenarios and 4 are valid, th
 other 2 are invalid. So, instead of explicitly looking for the valid situations, we can
 instead get rid of the invalid ones. Like so:
 
-    if (NOT(Condition1 OR Condition2))
-    {
-        // period overlaps selection
-    }
+```csharp
+if (NOT(Condition1 OR Condition2))
+{
+    // period overlaps selection
+}
+```
 
 Implemented in code:
 
-    if (!(
-        (period.Start < selection.Start && period.End < selection.Start) ||
-        (period.Start > selection.End && period.End > selection.End))
-    )
-    {
-        // period overlaps selection
-    }
+```csharp
+if (!(
+    (period.Start < selection.Start && period.End < selection.Start) ||
+    (period.Start > selection.End && period.End > selection.End))
+)
+{
+    // period overlaps selection
+}
+```
 
 This is better, but can be improved. Since we know that a period start is always before
 the period end, we can exclude the extra comparisons:
 
-    if (!(period.End < selection.Start || period.Start > selection.End))
-    {
-        // period overlaps selection
-    }
+```csharp
+if (!(period.End < selection.Start || period.Start > selection.End))
+{
+    // period overlaps selection
+}
+```
 
 This is starting to look much better, and one small change simplifies it further. Since binary
 logic states that **NOT(A OR B)** is equivalent to **NOT(A) AND NOT(B)**, we can make this change:
 
-    if (period.End > selection.Start && period.Start < selection.End)
-    {
-        // period overlaps selection
-    }
+```csharp
+if (period.End > selection.Start && period.Start < selection.End)
+{
+    // period overlaps selection
+}
+```
 
 ...and now we have a simple solution that covers all use cases. The code is easy to maintain
 and read. It also lets us explain the algorithm in clear English: **A period overlaps a selected

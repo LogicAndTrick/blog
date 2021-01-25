@@ -1,0 +1,14 @@
+{
+  "name": "logic-and-trick-blog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "vitepress": "^0.11.4"
+  },
+  "scripts": {
+    "dev": "vitepress dev site",
+    "build": "vitepress build site",
+    "serve": "vitepress serve site"
+  }
+}

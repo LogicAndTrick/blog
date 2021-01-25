@@ -1,0 +1,91 @@
+
+body {
+  background-color: #eee;
+}
+
+@media (min-width: 820px) {
+  .sidebar > .sidebar-links {
+      padding: 1rem 0;
+  }
+  .sidebar > .sidebar-links > .sidebar-link + .sidebar-link {
+      padding-top: 0.5rem;
+  }
+}
+
+/* POST PAGE */
+
+blockquote > p:not(:first-child) {
+  margin-top: 1rem;
+}
+
+blockquote cite {
+    display: block;
+    font-size: 80%;
+    text-align: right;
+}
+
+.left {
+  float: left;
+  max-width: 310px;
+}
+.right {
+  float: right;
+  max-width: 310px;
+}
+.right img, .left img {
+  max-width: 300px;
+}
+.right-large {
+  float: right;
+  max-width: 410px;
+}
+.right-large img {
+  max-width: 400px;
+}
+
+.image {
+  text-align: center;
+  padding: 4px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+}
+
+.image.center {
+  margin: 15px auto;
+}
+
+.image.left, .image.left-large {
+  margin: 15px 30px 15px 0;
+}
+
+.image.right, .image.right-large {
+  margin: 15px 0 15px 30px;
+}
+
+.image p {
+  color: red;
+  font-style: italic;
+  margin: 0;
+  font-size: 90%;
+  line-height: 120%;
+}
+
+.image img {
+  display: block;
+  margin: 0 auto 10px auto;
+  max-width: 100%;
+}
+
+@media all and (max-width: 700px) {
+  /* At this point stop floating images */
+  
+  .left, .right, .left-large, .right-large {
+      float: none;
+      max-width: none;
+      margin: 15px auto !important;
+  }
+  .right img, .left img, .left-large img, .right-large img {
+      max-width: 100%;
+  }
+}

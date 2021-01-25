@@ -1,22 +1,22 @@
-{
-    "date": "2012-05-22",
-    "category": "Games",
-    "tags": ["games", "borderline-fanfiction"],
-    "title": "Tales of War",
-    "log": [
-        "2015-09-14 - AW4 was made available in Japan in 2013 as a Club Nintendo reward"
-    ],
-    "disqus_id": "logic-and-trick-blog-id-20"
-}
+---
+date: 2012-05-22
+category: Games
+tags: 
+    - games
+    - borderline-fanfiction
+title: Tales of War
+log:
+    - 2015-09-14 - AW4 was made available in Japan in 2013 as a Club Nintendo reward
+---
 
 > Day 23. Your opponent has moved his rocket unit into position to fire on your tanks across the river. You carefully arrange your units out of reach, strategically placing them into an advantageous position for the next move. Ever-so-slowly, you advance your front line and bolster your defences, forever locked in a trade-off between dealing damage versus taking it in return.
-
+> 
 > Every decision you make will dictate whether you win or lose. Taking advantage of map chokepoints (and, if there aren't any, creating artificial chokepoints), choosing the right units to build, sacrificing the few to save the many, knowing when to change tactics, when to fall back and defend, or when to rush in and overwhelm the enemy. And again, there's the ever-present trade-off between losing your own units and taking theirs.
-
+> 
 > Day 45, it starts raining. Fog of war rolls in - an additional layer of strategy is added. Not only do you need to know your enemy's attack range, you need to know their vision range. You stop watching the fight and start listening to the subtle audio cues of the battle. There's a heavy tank near their HQ, a sub circling around to take out your battleships. You need to anticipate the enemy - know what they're doing before you know what they've done. Being proactive is the key, as in fog of war, you don't have enough time to react if you weren't already prepared.
-
+> 
 > You start rolling your tanks forward. You blasted their recon units, so you know that they can't see you. Your rockets are perfectly safe on the road, and your infantry will be unharmed crossing that river. You are in the same situation as they are - at least for now - you can't see where they are. However, you have placed yourself in a superior tactical position. Your opponent fumbles to create units to see in the fog - who see themselves staring down the barrels of your tank division.
-
+> 
 > The next day comes around, and you use your trump card: a single recon unit, driving deep into their base. It will be trapped and will be sacrificed, but its job has already been done - its huge visual range has cut a path of light in the fog - you can see everything. Your tanks move in and clean up the enemy. You park on their bases to halt their production. Your APC delivers a mech infantry onto their HQ. Two days later, it's over. Your enemy has been crushed and humiliated.
 
 And then you are taken to the results screen. If you didn't already figure it out, this somewhat cheesy and overly dramatic story is about [Advance Wars](https://en.wikipedia.org/wiki/Wars_%28series%29), one of my favourite game series. Specifically, the latest game in the series, [Advance Wars: Dark Conflict](https://en.wikipedia.org/wiki/Advance_Wars:_Days_of_Ruin) (known as Days of Ruin outside the Europe region).

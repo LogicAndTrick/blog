@@ -1,13 +1,12 @@
-{
-    "date": "2011-06-22",
-    "category": "Games",
-    "tags": ["games"],
-    "title": "Genre Wars: Fantasy and Sci-Fi",
-    "log": [
-        "2015-10-23 - Basically rewrote the entire article"
-    ],
-    "disqus_id": "logic-and-trick-blog-id-18"
-}
+---
+date: 2011-06-22
+category: Games
+tags:
+    - games
+title: 'Genre Wars: Fantasy and Sci-Fi'
+log:
+    - 2015-10-23 - Basically rewrote the entire article
+---
 
 Two genres I particularly enjoy are fantasy and sci-fi. These two genres are often compared
 as if they are two ends of a one-dimensional spectrum, but I don't really think that's the case.
