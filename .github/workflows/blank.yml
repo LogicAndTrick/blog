@@ -13,10 +13,10 @@ jobs:
         
       - name: Build and publish
         run: |
+          git checkout -b build
           yarn install
           yarn build
-          cd site/.vitepress/dist
-          git init --initial-branch=main
+          mv site/.vitepress/dist docs
           git add -A
           git commit -m 'deploy'
-          git push -f https://github.com/LogicAndTrick/blog.git main:publish
+          git push -f https://github.com/LogicAndTrick/blog.git build:publish
