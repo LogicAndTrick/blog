@@ -1,0 +1,21 @@
+name: Publish
+
+on:
+  push:
+    branches: [ main, setup-ci ]
+  workflow_dispatch: # enables manual run button
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        
+      - name: Build and publish
+        run: |
+          yarn build
+          cd site/.vitepress/dist
+          git init --initial-branch=main
+          git add -A
+          git commit -m 'deploy'
+          git push -f https://github.com/LogicAndTrick/blog.git main:publish
