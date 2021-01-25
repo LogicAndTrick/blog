@@ -1,0 +1,25 @@
+name: Publish
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: # enables manual run button
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        
+      - name: Build and publish
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "noemail@example.com"
+          git checkout -b build
+          yarn install
+          yarn build
+          mv site/.vitepress/dist docs
+          echo 'logic-and-trick.com' > docs/CNAME
+          git add -A
+          git commit -m 'deploy'
+          git push -f https://github.com/LogicAndTrick/blog.git build:publish
