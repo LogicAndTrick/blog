@@ -13,6 +13,7 @@ jobs:
         
       - name: Build and publish
         run: |
+          yarn install
           yarn build
           cd site/.vitepress/dist
           git init --initial-branch=main
