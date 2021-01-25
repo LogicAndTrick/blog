@@ -19,7 +19,7 @@ jobs:
           yarn install
           yarn build
           mv site/.vitepress/dist docs
-          echo 'logic-and-trick.com' > CNAME
+          echo 'logic-and-trick.com' > docs/CNAME
           git add -A
           git commit -m 'deploy'
           git push -f https://github.com/LogicAndTrick/blog.git build:publish
