@@ -2,7 +2,7 @@ name: Publish
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, setup-ci ]
   workflow_dispatch: # enables manual run button
 
 jobs:
@@ -19,6 +19,7 @@ jobs:
           yarn install
           yarn build
           mv site/.vitepress/dist docs
+          echo 'logic-and-trick.com' > CNAME
           git add -A
           git commit -m 'deploy'
           git push -f https://github.com/LogicAndTrick/blog.git build:publish
