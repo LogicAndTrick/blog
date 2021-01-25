@@ -13,6 +13,8 @@ jobs:
         
       - name: Build and publish
         run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "noemail@example.com"
           git checkout -b build
           yarn install
           yarn build
