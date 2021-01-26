@@ -28,7 +28,7 @@ defineProps({
   border-bottom: 2px solid var(--c-divider-dark);
 }
 
-@media (min-width: 820px) {
+@media (min-width: 960px) {
   .sidebar {
     display: block;
     position: fixed;

@@ -44,18 +44,6 @@ const categoryGroups = computed(() => {
 </script>
 
 <style scoped>
-.home {
-  padding: 0 2rem 2rem;
-}
-.container {
-  margin: 0 auto;
-  padding: 1.5rem;
-  max-width: 75rem;
-  
-  border: 2px solid var(--c-divider-dark);
-  border-radius: 0.25rem;
-  background-color: white;
-}
 .content :first-child :first-child {
   margin-top: 0;
 }

@@ -3,7 +3,22 @@ body {
   background-color: #eee;
 }
 
-@media (min-width: 820px) {
+main > .container {
+  margin: 0 auto;
+  padding: 1.5rem;
+  max-width: 75rem;
+  background-color: white;
+}
+
+@media (min-width: 701px) {
+  main {
+    padding: 0 2rem 2rem;
+  }
+  .container {
+    border: 2px solid var(--c-divider-dark);
+    border-radius: 0.25rem;
+  }
+  
   .sidebar > .sidebar-links {
       padding: 1rem 0;
   }
@@ -12,7 +27,7 @@ body {
   }
 }
 
-/* POST PAGE */
+/* PAGE STYLES */
 
 blockquote > p:not(:first-child) {
   margin-top: 1rem;
@@ -23,6 +38,8 @@ blockquote cite {
     font-size: 80%;
     text-align: right;
 }
+
+/* FLOATED IMAGES */
 
 .left {
   float: left;

@@ -9,7 +9,7 @@
       <div class="flex-grow" />
 
       <div class="nav">
-        <span>© Logic &amp; Trick 2021</span>
+        <span>© Logic &amp; Trick {{ currentYear }}</span>
         <span class="splitter">&bull;</span>
         <a href="https://github.com/LogicAndTrick">Github</a>
         <span class="splitter">&bull;</span>
@@ -22,9 +22,14 @@
 </template>
 
 <script setup lang="ts">
-import { defineEmit } from 'vue'
+import { defineEmit, computed } from 'vue'
 
 defineEmit(['toggle'])
+
+const currentYear = computed(() => {
+  const dt = new Date();
+  return dt.getFullYear();
+});
 </script>
 
 <style scoped>
@@ -32,7 +37,13 @@ defineEmit(['toggle'])
   z-index: var(--z-index-navbar);
   padding: .7rem 1.5rem;
   height: var(--header-height);
-  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--c-divider-light);
+}
+
+@media (min-width: 701px) {
+  .nav-bar {
+    border-bottom: 0;
+  }
 }
 
 .nav-wrapper {
@@ -58,7 +69,7 @@ defineEmit(['toggle'])
   height: 0.25rem;
 }
 
-@media (min-width: 820px) {
+@media (min-width: 700px) {
   .nav {
     flex-flow: row nowrap;
     line-height: 1rem;

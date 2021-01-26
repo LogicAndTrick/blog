@@ -53,9 +53,9 @@ const log = computed(() => {
 
 <style scoped>
 .page-title {
-    padding-bottom: 5px;
+    padding-bottom: 0.25rem;
     border-bottom: 2px solid var(--c-divider-light);
-    margin-bottom: 10px;
+    margin: 0 0 0.25rem;
 }
 .page-info {
   font-size: 1rem;
@@ -66,24 +66,10 @@ const log = computed(() => {
     padding-top: 1rem;
 }
 
-.page {
-  padding: 0 2rem 2rem;
-}
-
-@media (min-width: 820px) {
+@media (min-width: 960px) {
   .page {
     margin-left: 17rem;
   }
-}
-
-.container {
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  max-width: 75rem;
-  
-  border: 2px solid var(--c-divider-dark);
-  border-radius: 0.25rem;
-  background-color: white;
 }
 
 .content {
