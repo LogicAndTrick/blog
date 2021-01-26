@@ -35,7 +35,7 @@ const currentYear = computed(() => {
 <style scoped>
 .nav-bar {
   z-index: var(--z-index-navbar);
-  padding: .7rem 1.5rem;
+  padding: .7rem .5rem;
   height: var(--header-height);
   border-bottom: 1px solid var(--c-divider-light);
 }
@@ -43,6 +43,7 @@ const currentYear = computed(() => {
 @media (min-width: 701px) {
   .nav-bar {
     border-bottom: 0;
+    padding: .7rem 3rem;
   }
 }
 
@@ -59,9 +60,11 @@ const currentYear = computed(() => {
 
 .nav {
   display: flex;
+  white-space: nowrap;
   flex-flow: column nowrap;
   line-height: 0.8rem;
   font-size: 0.8rem;
+  margin-left: 0.5rem;
 }
 
 .nav .splitter {
