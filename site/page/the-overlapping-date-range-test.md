@@ -24,7 +24,7 @@ When this problem crops up for me (which is quite often), I draw a diagram.
 Imagine that the selected time range and the periods to match against are drawn as timelines.
 There are six different situations that can arise:
 
-<div class="image center" markdown="1">
+<div class="image center">
     <img src="../image/the-overlapping-date-range-test/OverlappingDateRangeDiagram.png" alt="Time period overlap test" />
     A timeline diagram of the six scenarios of this problem.
 </div>

@@ -14,7 +14,7 @@ This post is sort of an in-depth look at some of the technical aspects of Sledge
 
 Before I implement a feature, I need to ensure that all the functionality of said feature has been scoped out in my mind. The first step for me when planning a feature in Sledge is to play with it in Hammer (the official Goldsource editor) until I am confident of its functionality. Below are my notes while using the decal tool in Hammer 3.5:
 
-<div class="image right-large" markdown="1">
+<div class="image right-large">
     <img src="../image/decal-rendering-in-sledge/DecalsEditorVsEngine.jpg" alt="Decals in the editor">
     Decals behave differently in the editor when compared to the engine.
 </div>
@@ -40,7 +40,7 @@ To figure out the next step, I asked for advice from the Goldsource veterans ove
 
 This is exactly the information that I needed to continue work on this. First, I need to run a simple test to confirm this behaviour. I place a bunch of tiny brushes varying distances from the floor, and apply a decal to the underside of each one. If the theory is correct, the brushes less than 5 units from the floor will have a decal on the floor underneath them, and the brushes more than 5 units from the floor will not. The results of the test can be seen below.
 
-<div class="image center" markdown="1">
+<div class="image center">
 <img src="../image/decal-rendering-in-sledge/DecalDistanceTest.jpg" alt="Decals distance test" />
 The results of the test suggest that the bounding box is 8 units in size, rather than 10.
 </div>
@@ -49,7 +49,7 @@ Looking at these results, the decals that are 3 or less units away from the floo
 
 ## Implementing Decals
 
-<div class="image right" markdown="1">
+<div class="image right">
 <img src="../image/decal-rendering-in-sledge/DecalRendering1GeometryNoClip.png" alt="Step 1 Sledge/Hammer comparison" />
 A comparison between the two editors after the first step of decal rendering.
 </div>
@@ -73,14 +73,14 @@ Looks good, right? But we're not there yet! There's plenty of other things that 
 
 ...which means there's 9 more requirements that need to be met. Let's move on to the next step: geometry clipping. So far, the geometry generated will always be a rectangle, and the size will always be the same as the decal texture. This is fine for when the decal has plenty of space around it, but take a look at what happens when we make it a bit smaller:
 
-<div class="image center" markdown="1">
+<div class="image center">
 <img src="../image/decal-rendering-in-sledge/DecalRendering2GeometryClippingError.png" alt="Geometry clipping error" />
 Comparison of the decal geometry clipping in Hammer and Sledge (without clipping)
 </div>
 
 Well, that's no good. The geometry is spilling over the edge. This is because one of the rules has not been implemented yet: *A decal placed near the edge of a face is clipped to the face and does not spill over the edge*. So let's implement that next - if you're interested in the code, you can [take a look at the new commit log](https://github.com/LogicAndTrick/sledge/commit/1041ba5c192fbcaf04e51c3f20f43b232b2dc31f#L0R174). There are a few other minor changes, but nothing significant. The screenshot to the right shows the fixed code clipping the decals properly across face edges.
 
-<div class="image right" markdown="1">
+<div class="image right">
 <img src="../image/decal-rendering-in-sledge/DecalRendering2Clipping.png" alt="Geometry clipping error" />
 The decal geometry in Sledge after clipping has been implemented
 </div>
@@ -110,7 +110,7 @@ Okay! We have a nice implementation of decals now - if you compare it to Hammer,
 - *Decals in Hammer and in Goldsource behave differently when multiple faces are involved (inconsistency)*
 - *Multiple-face behaviour seems unpredictable in both the editor and engine (inconsistency)*
 
-<div class="image left" markdown="1">
+<div class="image left">
 <img src="../image/decal-rendering-in-sledge/DecalRendering3Colours.png" alt="Rendering the correct decal colours" />
 Altering the textures during load means that the texture browser shows the correct decal colours
 </div>
@@ -123,7 +123,7 @@ There are two ways that this can be done. The easy way is to use a shader over t
 
 Altering the textures on load can be quite expensive, but fortunately there are some easy work-arounds that make it much faster. Because textures from Goldsource WAD texture packages load as indexed bitmaps, it means that I have access to the bitmap palette. Changing the palette allows me to quickly alter all the pixels in the bitmap without needing to inspect them individually (which is very slow). Fortunately, the special properties of transparency in the WAD format also uses the palette, so I have access to the data I need to make this change. If you're interested in the source code, [here is the commit log for the texture loading change](https://github.com/LogicAndTrick/sledge/commit/c6fa811b46f7bd3741f143e0115384a29054683c#L3R15).
 
-<div class="image center" markdown="1">
+<div class="image center">
 <img src="../image/decal-rendering-in-sledge/DecalRendering4FinalResult.png" alt="Final result in Sledge" />
 The final result: Decals rendering in Sledge after all the required functionality has been implemented
 </div>
